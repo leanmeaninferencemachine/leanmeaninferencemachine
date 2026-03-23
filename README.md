@@ -48,3 +48,5 @@ graph TD
     
     Daemons[Communication Daemons] -->|WA/TG/Slack/Email| Router
     Daemons -->|Queue| Outbound[(Outbound Queue)]
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-blue)
