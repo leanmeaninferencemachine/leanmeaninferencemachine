@@ -24,3 +24,8 @@ llama.cpp/*.so
 # But keep the README files
 !whisper.cpp/README.md
 !llama.cpp/README.md
+
+# Subproject source (not part of LMIM OS)
+llama.cpp/
+whisper.cpp/
+models/
