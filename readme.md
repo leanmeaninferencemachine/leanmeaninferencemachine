@@ -1,6 +1,14 @@
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 # ⚡ LMIM OS v2.1 "Tezcat · Sharpened" — Lean Mean Inference Machine
+# LMIM OS
+
+[![GitHub release](https://img.shields.io/github/v/release/leanmeaninferencemachine/leanmeaninferencemachine)](https://github.com/leanmeaninferencemachine/leanmeaninferencemachine/releases/latest)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![GitHub stars](https://img.shields.io/github/stars/leanmeaninferencemachine/leanmeaninferencemachine)](https://github.com/leanmeaninferencemachine/leanmeaninferencemachine/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/leanmeaninferencemachine/leanmeaninferencemachine)](https://github.com/leanmeaninferencemachine/leanmeaninferencemachine/commits/main)
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Flmim.tech)](https://lmim.tech)
+
+Lean Mean Inference Machine — Local AI That Actually Does Things
 
 > **Codename: Tezcat · Sharpened** — The same fire. Sharper edge. More capable, more focused, more yours.
 
@@ -250,7 +258,7 @@ LMIM OS is a powerful autonomous agent. It can execute shell commands, read/writ
 
 ---
 
-**Built with ❤️ in Tijuana. Stay lean. Stay mean.**
+**Built with ❤️. Stay lean. Stay mean.**
 
 ## Download
 
