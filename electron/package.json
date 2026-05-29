@@ -1,0 +1,61 @@
+{
+  "name": "lmim-os",
+  "version": "2.1.0",
+  "description": "LMIM OS \u2014 Local AI Operating System",
+  "author": "ANDRES ISRAEL SANTOS DELGADO",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder build --linux AppImage"
+  },
+  "build": {
+    "appId": "com.lmim.os",
+    "productName": "LMIM_OS",
+    "icon": "../app/static/logo.png",
+    "asar": true,
+    "directories": {
+      "output": "dist_electron"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "../app/static/logo.png",
+      "!node_modules",
+      "!whatsapp-window.js",
+      "!whatsapp-preload.js",
+      "!baileys_modules"
+    ],
+    "extraResources": [
+      {
+        "from": "./backend",
+        "to": "backend",
+        "filter": [
+          "**/*",
+          "!**/__pycache__",
+          "!**/node_modules"
+        ]
+      },
+      {
+        "from": "./baileys_modules",
+        "to": "node_modules",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility",
+      "synopsis": "Local AI Operating System",
+      "desktop": {
+        "StartupWMClass": "lmim-os"
+      }
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^24.13.3"
+  }
+}

@@ -1,0 +1,98 @@
+# requirements.txt
+# Runtime dependencies for LMIM OS (Python 3.11)
+# Excludes: Fedora system packages, build tools, test deps
+# =============================================================================
+
+# === Core Framework ===
+Flask==3.1.3
+flask-cors==6.0.2
+Flask-SocketIO==5.6.1
+python-engineio==4.13.1
+python-socketio==5.16.1
+Werkzeug==3.1.6
+Jinja2==3.1.6
+MarkupSafe==3.0.3
+itsdangerous==2.2.0
+click==8.3.1
+blinker==1.9.0
+
+# === Config & Env ===
+python-dotenv==1.2.1
+PyYAML==6.0.2
+
+# === HTTP & Networking ===
+requests==2.32.5
+httpx==0.28.1
+urllib3==2.6.3
+certifi==2026.1.4
+charset-normalizer==3.4.4
+idna==3.11
+
+# === Async ===
+aiohttp==3.13.3
+aiohappyeyeballs==2.6.1
+aiosignal==1.4.0
+frozenlist==1.8.0
+multidict==6.7.1
+yarl==1.23.0
+async-timeout==5.0.1
+propcache==0.4.1
+
+# === Data & Parsing ===
+beautifulsoup4==4.14.3
+soupsieve==2.8
+lxml==6.0.1
+jsonschema==4.23.0
+jsonschema-specifications==2024.10.1
+referencing==0.36.2
+rpds-py==0.27.0
+
+# === Pydantic ===
+pydantic==2.12.5
+pydantic_core==2.41.5
+annotated-types==0.7.0
+typing-inspection==0.4.2
+typing_extensions==4.15.0
+
+# === Cryptography & Security ===
+cryptography==45.0.4
+cffi==1.17.1
+pycparser==2.22
+
+# === System Monitoring ===
+psutil==7.0.0
+
+# === Playwright (WhatsApp/Telegram daemons) ===
+playwright==1.58.0
+pyee==13.0.1
+greenlet==3.3.2
+
+# === Pillow (image handling) ===
+pillow==11.3.0
+
+# === Communication Daemons ===
+discord.py==2.7.1
+slack_bolt==1.27.0
+slack_sdk==3.41.0
+
+# === Web Search ===
+ddgs==9.11.4
+duckduckgo-search==7.5.1
+
+# === Voice / Audio (STT + TTS pipeline) ===
+# soundfile: Required for WebM→WAV fallback when ffmpeg is unavailable or incompatible
+soundfile==0.12.1
+# numpy: Required by soundfile for resampling
+numpy>=1.24.0
+# wave is stdlib — no install needed
+
+# === Utilities ===
+humanize==4.13.0
+tqdm==4.67.3
+python-dateutil==2.9.0.post0
+six==1.17.0
+
+# === Build-time (PyInstaller) ===
+pyinstaller>=6.0,<7
+pyinstaller-hooks-contrib>=2024.0
+altgraph==0.17.5

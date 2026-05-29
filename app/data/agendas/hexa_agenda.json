@@ -1,0 +1,46 @@
+{
+  "2025-01-16": [
+    {
+      "time": "12:00",
+      "status": "booked",
+      "user_phone": "4621316208",
+      "user_name": "Unknown",
+      "meeting_type": "class",
+      "meeting_id": "MTG_HEXA_1773663465",
+      "notes": "",
+      "created_at": 1773663465.2277458
+    }
+  ],
+  "2026-03-18": [
+    {
+      "time": "17:00",
+      "status": "booked",
+      "user_phone": "+524621316208",
+      "user_name": "Unknown",
+      "meeting_type": "general",
+      "meeting_id": "MTG_HEXA_1773740620",
+      "notes": "",
+      "created_at": 1773740620.8652444
+    },
+    {
+      "time": "15:00",
+      "status": "booked",
+      "user_phone": "4621316208",
+      "user_name": "Andres",
+      "meeting_type": "general meeting",
+      "meeting_id": "MTG_HEXA_1773783288",
+      "notes": "",
+      "created_at": 1773783288.9785526
+    },
+    {
+      "time": "16:00",
+      "status": "booked",
+      "user_phone": "4621316208",
+      "user_name": "Unknown",
+      "meeting_type": "General Meeting",
+      "meeting_id": "MTG_HEXA_1773783385",
+      "notes": "",
+      "created_at": 1773783385.9674668
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+
+# Runtime data (keep structure, ignore contents)
+data/*
+!data/.gitkeep
+!data/README.md
+
+# Voice binaries (keep structure, ignore binaries)
+voice/bin/*
+!voice/bin/.gitkeep
+voice/espeak-ng-data/*
+!voice/espeak-ng-data/.gitkeep
+voice/models/*
+!voice/models/.gitkeep
+voice/*.tar.gz
+
+# Submodule binaries (keep structure, ignore compiled)
+whisper.cpp/build/
+whisper.cpp/*.o
+whisper.cpp/*.so
+llama.cpp/build/
+llama.cpp/*.o
+llama.cpp/*.so
+
+# But keep the README files
+!whisper.cpp/README.md
+!llama.cpp/README.md
