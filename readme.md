@@ -1,3 +1,5 @@
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
 # ⚡ LMIM OS v2.1 "Tezcat · Sharpened" — Lean Mean Inference Machine
 
 > **Codename: Tezcat · Sharpened** — The same fire. Sharper edge. More capable, more focused, more yours.
