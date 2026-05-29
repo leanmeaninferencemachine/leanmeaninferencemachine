@@ -251,3 +251,13 @@ LMIM OS is a powerful autonomous agent. It can execute shell commands, read/writ
 ---
 
 **Built with ❤️ in Tijuana. Stay lean. Stay mean.**
+
+## Download
+
+| Platform | Download | Size |
+|----------|----------|------|
+| 🐧 Linux | [LMIM_OS-2.1.0.AppImage](https://lmim.tech/downloads/LMIM_OS-2.1.0.AppImage) | ~3.5 GB |
+| 🪟 Windows | [LMIM_OS-Setup-2.1.1.exe](https://lmim.tech/downloads/LMIM_OS-Setup-2.1.1.exe) | ~3.0 GB |
+
+[![Download Linux](https://img.shields.io/badge/Download-Linux_AppImage-10b981?style=for-the-badge&logo=linux)](https://lmim.tech/downloads/LMIM_OS-2.1.0.AppImage)
+[![Download Windows](https://img.shields.io/badge/Download-Windows_Installer-0078d4?style=for-the-badge&logo=windows)](https://lmim.tech/downloads/LMIM_OS-Setup-2.1.1.exe)
