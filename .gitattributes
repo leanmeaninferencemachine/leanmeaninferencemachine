@@ -1,0 +1,9 @@
+# Keep the GitHub language bar focused on actual project source.
+# Build scripts and OS-specific tooling are marked vendored so GitHub's
+# linguist ignores them in language statistics. They still appear in the
+# file tree and are still tracked — this is a display-only signal.
+
+*.ps1          linguist-vendored
+build_*.sh     linguist-vendored
+build_*.ps1    linguist-vendored
+*.spec         linguist-vendored
