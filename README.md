@@ -1,3 +1,5 @@
+<p align="center"><img src="logo.png" alt="LMIM Genesys" width="140"></p>
+
 <h1 align="center">LMIM Linux · Genesys</h1>
 
 <p align="center"><b>The OS that knows you.</b></p>
