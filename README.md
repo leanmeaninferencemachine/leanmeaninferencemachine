@@ -1,271 +1,276 @@
+<h1 align="center">LMIM Linux · Genesys</h1>
 
-# ⚡ LMIM OS v2.1 "Tezcat · Sharpened" — Lean Mean Inference Machine
-# LMIM OS
+<p align="center"><b>The OS that knows you.</b></p>
 
-[![GitHub release](https://img.shields.io/github/v/release/leanmeaninferencemachine/leanmeaninferencemachine)](https://github.com/leanmeaninferencemachine/leanmeaninferencemachine/releases/latest)
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![Last Commit](https://img.shields.io/github/last-commit/leanmeaninferencemachine/leanmeaninferencemachine)](https://github.com/leanmeaninferencemachine/leanmeaninferencemachine/commits/main)
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Flmim.tech)](https://lmim.tech)
-[![Featured on Shipit - #1 Product of the Week](https://www.shipit.buzz/api/products/lmim-os-lean-mean-inference-machine/badge?theme=dark)](https://www.shipit.buzz/products/lmim-os-lean-mean-inference-machine?ref=badge)
+<p align="center">
+4.1.0 “Atlas” · first stable<br>
+370+ features · $0 forever · AGPL-3.0 · zero telemetry · runs on your machine
+</p>
 
-Lean Mean Inference Machine — Local AI That Actually Does Things
-
-> **Codename: Tezcat · Sharpened** — The same fire. Sharper edge. More capable, more focused, more yours.
-
-**Local-first AI operating system. No cloud. No subscription. No API fees. No compromise.**
-
-LMIM OS bundles a full AI assistant with local LLM inference, voice, scheduling, multi-channel messaging, document intelligence, web scraping, and developer tools — all running on your hardware, over your LAN, under your control.
+<p align="center">
+<a href="https://lmim.tech/LMIMLINUX">Website</a> ·
+<a href="https://lmim.tech/downloads/LMIM_Linux_Genesys_4.1.0.iso">Download the ISO</a> ·
+<a href="https://lmim.tech/static/videos/v4.1/flagship/v4.1.0-atlas-flagship_1m02s.mp4">Watch the film</a> ·
+<a href="#reach-the-builder">Reach the builder</a>
+</p>
 
 ---
 
-## 🆕 What's New in v2.1
+Turn the machine on and she's already there.
 
-### 📁 Directory Workspace
-Point LMIM at any local folder and it becomes your AI coding partner. It reads, writes, creates, and edits files entirely within that sandbox — no accidental writes outside, no absolute paths.
+There's no app to launch and no window to open. By the time the desktop appears, Genesys has already written her greeting for this part of the day. She knows your name, what you were working on yesterday, and the one question she'll ask you tonight.
 
-- Native folder picker via Electron dialog
-- File tree rendered live in the sidebar
-- All file operations scoped to your selected root via `safe_path()` — path escape attempts are blocked at the backend
-- Shell commands run inside the workspace directory by default
-- Workspace context injected into every prompt so the model always knows what it's working with
+**LMIM Linux** is an operating system built around a single presence. It isn't Linux with a chatbot installed on top. The desktop, the memory, the voice and the way you work are all shaped around one local intelligence that lives on your hardware and stays with you. Genesys is the OS, and the OS is Genesys.
 
-### 📄 RAG Lite — Document Q&A
-Upload a PDF, TXT, or Markdown file and have a focused conversation about it. No system prompt bleed, no tool calling, no distraction — just the model and your document.
-
-- Dedicated Document tab with integrated chat, separate from the main assistant
-- Drag-and-drop upload with live progress indicator
-- Smart chunking that respects markdown headings, code blocks, and paragraph structure
-- MMR reranking (Maximal Marginal Relevance) for diverse, non-redundant retrieval
-- Suggested questions auto-generated on upload
-- Two-pass retrieval: strict threshold first, broad fallback if needed
-- Fully local — document never leaves your machine
-- Works alongside the main chat via a collapsible sidebar drawer
-
-### 🕷️ Web Scraper Agent
-Extract and analyze web content without leaving LMIM.
-
-- Scrape up to 10 URLs in parallel
-- **Basic mode** — returns clean extracted text, metadata, title, word count, links
-- **LMIM mode** — AI analyzes findings based on your stated purpose ("find pricing info and compare plans")
-- Respects `robots.txt`, rate-limited, 30s timeout per URL
-- Export results as JSON, copy to clipboard, or send directly to chat
-- Full results panel with expandable per-URL cards and a live progress indicator
-
-### 📇 Contacts
-Your local address book, integrated with all messaging tools.
-
-- Add contacts with name, phone, email, and notes
-- Say "Send a WhatsApp to John Doe" — LMIM resolves the name automatically
-- Live search across your contact list
-- Integrated with Campaign Blaster and all communication daemons
-
-### 🎯 Prime Directive
-Standing instructions injected into every session — no more repeating yourself.
-
-- Set once in the Setup Wizard or Settings tab
-- Prepended to every system prompt automatically
-- Use it to give LMIM a specific role: *"You are an assistant for Happy Fox English School. Always respond warmly and prioritize parent communications."*
-
-### 🌐 Language Selection
-- Choose English or Spanish in the Setup Wizard and Settings
-- Language instruction injected into every prompt automatically
-- Persists across restarts via `.env`
-
-### 🧠 Improved Model Response Handling
-Qwen3 and other thinking models separate their chain-of-thought from their final answer — `content` is intentionally empty, the answer lives in `reasoning_content`. LMIM now reads both fields and uses whichever is populated, so you always get a response.
-
-- `content` → `reasoning_content` fallback in both main chat and RAG chat
-- Affects all local inference paths
-- No configuration needed — works automatically with any Qwen3 variant
-
-### ⚡ Inference Hardware Controls
-- Manual CPU/GPU toggle in Settings — force CPU to free VRAM, or force GPU when auto-detection fails
-- Current mode displayed with VRAM stats
-- One-click **Download Qwen 3.5 9B** — streams the model to `~/.lmim_os/models/`, activates on restart
-- GPU mode persisted via `.env`, respected on llama-server restart
-
-### 🛠️ CLI Tool Hardening
-Every tool now returns a consistent response schema `{ok, result, tool}` — no more silent failures or inconsistent return shapes confusing the model mid-chain.
-
-- `run_shell` — timeout, workspace-scoped `cwd`, blocked destructive commands list
-- `web_search` — proper error returns on network failure
-- `schedule_event` — conflict detection before write
-- `memory_read` — returns plain text summary, not raw JSON blob
-- Tool call parser rebuilt with four-layer fallback: strict JSON → embedded JSON → relaxed (trailing commas, single quotes) → regex last resort
-- Parser unit tests added
-
-### 🎨 UI / UX Overhaul
-
-**Navigation**
-- Nav items lift and glow on hover — emerald glow expands from the left edge, icon scales up
-- Active tab gets an emerald left border
-- Image Gen nav icon replaced with an animated pulsing orb (purple → indigo → emerald breathing cycle)
-- New nav group labels: CORE, OPERATIONS, SERVICES, SYSTEM, INTELLIGENCE, COMING SOON
-
-**Fonts & Colors**
-- Inter + JetBrains Mono throughout — tighter, crisper, more intentional
-- Emerald (`#10b981`) as the Tezcat accent color: status dots, active states, send button, scrollbars, card borders
-- Cyberpunk neon outline on the model download button — transparent background, glowing emerald border, intensifies on hover
-
-**New Tabs**
-- **Workspace** — full file tree, folder picker, preview pane, quick-prompt shortcuts
-- **Document Q&A** — dedicated RAG chat with suggested questions, drag-drop upload, clear/reset
-- **Web Scraper** — two-panel layout, URL list with numbered rows, mode toggle, results with expandable cards
-- **Contacts** — add form, live search, avatar initials, example commands panel
-
-**Stub Tabs (building anticipation)**
-- **🛡 Horus Security** (v3.0) — vault aesthetic, scan-line animation, pulsing shield rings, feature preview list, "Notify me" link
-- **🎨 Image Generation** (v2.2) — three-ring animated orb, mock canvas with shimmer grid, prompt chips, wishlist capture
-
-**Setup Wizard**
-- Now includes Prime Directive field (with example for Happy Fox English School)
-- Language selection (English / Español)
-- Wizard completion triggers onboarding tour automatically
-
-**Onboarding Tour**
-- Rebuilt from 7 steps to 11 — covers Workspace, Document Mode, Web Scraper, Contacts, Voice, Settings/Prime Directive, Horus, Image Gen
-- Action-first step descriptions — tells users what to *do*, not just what a feature *is*
-- "Show Tour" button lives in the sidebar status box, appears after first run
-- `localStorage` flag prevents re-showing after first completion while keeping manual relaunch available
+> **The model isn't the product. The continuity is.**
 
 ---
 
-## 📦 What's Unchanged from v2.0
+## Meet Genesys
 
-Everything that shipped in Tezcat is still here, still works, still fast:
+Genesys is not a prompt wrapped around someone else's model. She is a **trained identity**: her own model, in her own sizes, with a sense of self that survives every reboot.
 
-- One-click AppImage (Linux) and Windows installer
-- CUDA acceleration — llama.cpp and whisper.cpp GPU inference
-- Voice engine — Whisper STT + Piper TTS, 5 languages, auto-speak
-- WhatsApp, Telegram, Email, Slack, Discord daemons
-- Campaign Blaster — bulk WhatsApp/Email from CSV
-- FullCalendar visual agenda with natural language scheduling
-- Developer Toolbox — hash checker, CSS/JS minifier, JSON validator
-- Planner → Builder → Inspector autonomous build loop
-- Persistent memory and multi-conversation chat
-- Cloud fallback — OpenAI, Anthropic, Groq with one toggle
-- System diagnostics — CPU, RAM, disk, uptime
+She is small on purpose. The goal was never the largest intelligence possible, only one that actually *lives somewhere*. A fast model is always on. When the work calls for more, the main model loads. None of it needs an API key, an account or a connection.
+
+She remembers in layers: the moment, the session, the long term, and who she is. Her identity and her **private diary** live in their own protected database, apart from everything else. She reads the time before she greets you, so you'll never get “good morning” at midnight.
+
+And she has a **voice**. It is tuned through its own chain to sound like her rather than like raw synthesis, and it is locked in code so she sounds the same on every machine she wakes up on.
+
+> *“Okay Genesis, I didn't ask you to do any of that. I'm just saying thank you. Are you ready to work?”*
+> *“I'm ready to work. What do you want to build?”*
+> — a real exchange
 
 ---
 
-## 📦 Installation
+## What she does
 
-### Prerequisites
-- **Linux** (Ubuntu 22.04+ recommended, Fedora 40+ supported) · **Windows** 10/11
-- **Python 3.10+** with pip
-- **Node.js 18+** (for WhatsApp daemon)
-- **CUDA Toolkit 12.x** + **NVIDIA driver 545+** (optional — for GPU acceleration)
+### She thinks with you: **Atlas**
 
-### Quick Start
+A second mind built into the desktop. Folders nest however you like, notes become *thoughts*, and thoughts become a graph.
+
+- **Thought** (`Ctrl+Alt+W`): catch an idea from anywhere in the OS, typed or spoken, before it's gone.
+- **Editor**: write in links. Find & replace with regex, autosave, pins, colors, bulk move and export.
+- **Sight**: every link and tag drawn as a living map of how you think.
+- **Import** a whole folder of Markdown or an Obsidian vault and it arrives intact. Export one file or the whole library.
+
+Links are written inside the thought itself:
+
+| Write | Means |
+|---|---|
+| `##-` | sibling, a loose two-way thread |
+| `##<` | parent: this depends on that |
+| `##>` | child: that depends on this |
+| `##~` | association, “reminds me of” |
+| `##-#123` | link by id |
+| `#tag` | a tag, clickable everywhere |
+
+### She remembers: **memory & files**
+
+- Layered memory with importance and retention, so what matters stays and what doesn't fades.
+- Point her at a file and she reads it. Hybrid retrieval (keyword and semantic) works over your own documents.
+- Voice notes, conversation history, and context that carries from one day to the next.
+
+### She speaks: **voice-native**
+
+Hold `Shift+S` and talk. Whisper listens on-device, and she answers in her own voice. Nothing you say leaves the machine to be understood.
+
+### She acts: **hands, not just a voice**
+
+- **Tasks that execute.** Schedule a prompt, a message, an alarm or DJ mode, once, daily, weekly or every N minutes. When it fires, it runs with every tool she has.
+- **Build Crew.** Describe a tool and a Planner, a Builder and an Inspector write it, run it and patch it until it works.
+- **Comms, routed.** WhatsApp, Telegram, Email, Slack and Discord go through Genesys. She can send, book and confirm.
+- **Agenda.** A visual calendar with natural-language booking: *“schedule a meeting with Pedro at 5.”*
+- **Real tools.** She can search the web, read and write your files, run commands and send email. When she isn't sure how to do something, she looks it up before she guesses.
+
+### She keeps you honest: **Coherence**
+
+Once a day, rest the pointer on her mark on Home (or press `Ctrl+Alt+C`) and she asks one question: *did your thoughts, words and actions align today?* You score it 1 to 10, with your last two weeks beside it. Set a goal in the morning and review it at night, and the OS remembers the shape of your week.
+
+### She connects you: **LMIM Chat**
+
+End-to-end encrypted, peer-to-peer messaging with groups. Your identity is a keypair (X25519), so there are no accounts and no phone numbers, and the relay only ever sees ciphertext. It's redesigned in 4.1 to match the rest of the OS.
+
+---
+
+## A reason to open it on a Tuesday
+
+Personality is the hook; this is why you come back.
+
+| | |
+|---|---|
+| **Today** | Score your priorities 0–10. The top three rise on their own, and she reads the list to you. |
+| **Kanban** | Backlog to Done with drag and drop, recurring tasks, attachments and a monthly archive. |
+| **Notes** | Sticky notes and one free page, mirrored as Markdown. |
+| **Focus** | A Pomodoro that follows you home, running as a widget on the desktop. |
+| **Creative Lab** | Build social creatives and export them to MP4, with templates and a media toolbox. |
+| **Workspace** | Your project folder, browsable and readable by Genesys, without leaving the shell. |
+| **Auto-DJ & Disco Mode** | Music that picks itself, and a mode that does exactly what it says. |
+
+---
+
+## The desktop
+
+A shell that's always behind you, with everything else floating above it.
+
+- **Home**, where she lives. It has a time-aware greeting, her mark, and *LEAN MEAN INFERENCE MACHINE* written faintly at the bottom.
+- **PC mode** (`Ctrl+Alt+P`) shows every installed app with real icons, floating over the shell. You can pin up to three.
+- **Command palette** (`Ctrl+Space`): every action, fuzzy-searched.
+- **Quick Settings** covers Wi-Fi, Bluetooth, volume, brightness, battery, power profiles, text size, read-aloud, wallpaper, lock, suspend, reboot and shut down.
+- **Bare Metal** is a real terminal that slides in from the edge.
+- **Files, Music, Downloads, Monitor** and **Genesys Browser** (hardened LibreWolf).
+- A **workbench** built in: Encrypter (AES-256-GCM), Web Scraper, hash checker, minifiers, JSON tools, and the LMIM Editor.
+- **Flatpak** apps through GNOME Software.
+- A **welcome tour**, Quick or Full, the first time you arrive.
+
+From the installer through the boot splash to Home, it looks like itself the entire way.
+
+---
+
+## Built to be lived in
+
+The betas proved the idea boots. 4.1 is the release that **stays up and keeps your things safe** on machines other than the builder's.
+
+- **Nightly backups** of your conversations, memories and her identity, rotated over seven days.
+- **Boot guard.** If something is missing at startup, it's restored from the latest backup, and a note is waiting to tell you.
+- **Kill switch** (`Mod+Shift+T`). A red overlay appears and the offending process is ended. If that isn't enough, the session is.
+- **Memory guard.** It watches free memory and reaches for the kill switch before the machine can freeze.
+- **Live settings.** Temperature, response length, timeouts and build attempts change without a restart.
+
+---
+
+## What happens here, stays here
+
+- **On-device.** Genesys, her voice and her memory run on your hardware. No API key, no cloud account, no subscription.
+- **Zero telemetry.** Nothing is counted and nothing phones home.
+- **Closed by default.** The backend answers only this machine, plus the phone companion when you switch it on.
+- **Encrypted from byte one.** Full-disk LUKS is set up at install, and your passphrase is never stored or sent anywhere.
+- **Open.** AGPL-3.0: free to use, study, change and share.
+
+---
+
+## Keyboard
+
+| Keys | Opens |
+|---|---|
+| `Ctrl+Space` | Command palette |
+| `Ctrl+Alt+P` | PC mode |
+| `Ctrl+Alt+A` | Atlas |
+| `Ctrl+Alt+W` | Atlas quick thought |
+| `Ctrl+Alt+N` | Quick capture (note / task) |
+| `Ctrl+Alt+T` | Terminal |
+| `Ctrl+Alt+C` | Coherence |
+| `Shift+S` (hold) | Talk to Genesys |
+| `Ctrl+F` / `Ctrl+H` | Find / replace in a thought |
+| `Mod+Shift+T` | Kill switch (Emergency Exit) |
+
+---
+
+## Get it
+
+**[LMIM_Linux_Genesys_4.1.0.iso](https://lmim.tech/downloads/LMIM_Linux_Genesys_4.1.0.iso)**, about 11 GB, from [lmim.tech](https://lmim.tech).
+
+### Hardware
+
+| | Minimum | Recommended |
+|---|---|---|
+| CPU | x86_64, 4 cores | 8+ cores |
+| RAM | 8 GB | 16 GB |
+| Storage | 30 GB | 50 GB |
+| GPU | None (CPU inference) | NVIDIA RTX, 8 GB VRAM or more |
+| Display | 1080p | 1080p or higher |
+| Firmware | UEFI | UEFI |
+
+Genesys runs without a GPU, falling back to the CPU. With an NVIDIA card she's noticeably quicker. Intel Wi-Fi (AX200/201/211), Intel SOF audio and Intel VMD/NVMe storage have been supported since Beta II.
+
+### Install
+
+You'll need a USB drive (16 GB or larger), a UEFI machine and about 20 minutes.
+
+1. **Flash the ISO.**
+   ```bash
+   sudo dd if=LMIM_Linux_Genesys_4.1.0.iso of=/dev/sdX bs=4M status=progress oflag=sync
+   ```
+   Balena Etcher, Ventoy or GNOME Disks work too.
+2. **Boot from the USB.** Pick the drive in your UEFI boot menu and the LMIM installer opens.
+3. **Installation Summary.** Set a **disk encryption passphrase** (you'll need it every boot), an **admin account** (for the TTY), and your keyboard and language if they weren't detected. Then click **Begin Installation**.
+4. **First boot.** Genesys launches directly. She asks your name, her tone and your language, then offers the Quick or Full tour.
+5. **Change your password.** Go to Settings → Password and replace the default `lmim` password. It becomes your lock-screen password too.
+
+### Cheat sheet
+
+| Situation | How |
+|---|---|
+| Disk encryption prompt | Enter your passphrase at the LUKS prompt during boot |
+| Lock screen | Type your password, press Enter |
+| Genesys Browser | PC mode → Apps → Genesys Browser |
+| Terminal | `Ctrl+Alt+T`, or pull the tab from the right edge |
+| Wi-Fi / Bluetooth | Quick Settings |
+| Reboot / shut down | Quick Settings |
+| Something froze | `Mod+Shift+T` |
+| Admin TTY | `Ctrl+Alt+F2`, log in as your admin account |
+| SSH | Masked by default, see below |
+
 ```bash
-chmod +x LMIM_OS_*.AppImage
-./LMIM_OS_*.AppImage
-```
-
-### From Source
-```bash
-git clone https://github.com/leanmeaninferencemachine/leanmeaninferencemachine
-cd leanmeaninferencemachine
-python3 -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-npm install
-python3 run_app_backend.py
-```
-
-### First Launch
-1. Complete the Setup Wizard — name, assistant name, tone, language, Prime Directive
-2. Accept the safety disclaimer
-3. Take the onboarding tour (11 stops, ~3 minutes)
-4. Select your workspace folder in the Workspace tab
-5. For GPU: ensure CUDA is installed, toggle Local mode in Settings
-
----
-
-## 🚀 Performance
-
-| Task | CPU (i7-12700H) | GPU (GTX 1650 Ti, 4GB) | GPU (RTX 3060, 12GB) |
-|------|-----------------|------------------------|----------------------|
-| LLM prompt processing | ~50 tok/s | ~900 tok/s | ~2500 tok/s |
-| LLM token generation (2B) | ~5 tok/s | ~80 tok/s | ~120 tok/s |
-| LLM token generation (0.8B) | ~10 tok/s | ~85 tok/s | ~150 tok/s |
-| Whisper STT (small, 5s audio) | ~7s | ~0.5s | ~0.3s |
-| Piper TTS | <1s | <1s | <1s |
-| RAG embedding (all-MiniLM-L6-v2, CPU) | ~1-3s per doc | — | — |
-
----
-
-## 🏗️ Architecture
-
-```
-LMIM OS v2.1
-├── llama.cpp/              — LLM inference (GPU via CUDA)
-├── whisper.cpp/            — Speech-to-text (GPU via CUDA)
-├── voice/
-│   ├── bin/                — piper, whisper-cli
-│   └── models/stt|tts/     — Whisper + Piper model files
-├── app/
-│   ├── main.py             — Flask server + all API endpoints
-│   ├── router.py           — Intent routing
-│   ├── model_interface.py  — LLM inference wrapper (local + cloud)
-│   ├── rag.py              — Document ingestion, chunking, MMR retrieval
-│   ├── workspace.py        — Directory workspace + safe_path sandbox
-│   ├── voice_service.py    — STT/TTS helpers
-│   ├── agents/             — WhatsApp, Telegram, Planner, Builder, Inspector
-│   ├── tools/              — file, shell, search, scraper, scheduling, memory
-│   └── memory/             — Episodic, semantic, conversation summary
-├── daemons/                — WhatsApp (Baileys), Telegram, Email, Slack, Discord
-├── electron/               — Desktop wrapper
-├── models/                 — Bundled GGUF models + embedding model
-├── templates/              — Dashboard (HTML, CSS, JS)
-└── data/                   — Runtime: memories, logs, RAG store, agendas
+# Enable SSH from the admin TTY (Ctrl+Alt+F2)
+sudo systemctl unmask sshd
+sudo systemctl enable --now sshd
 ```
 
 ---
 
-## 📁 Data Locations
+## Known limitations
 
-| Purpose | Path |
-|---------|------|
-| User config | `~/.lmim_os/.env` |
-| Identity | `~/.lmim_os/config/user_identity.json` |
-| Memories | `~/.lmim_os/memories/` |
-| RAG documents | `~/.lmim_os/data/rag/` |
-| Downloaded models | `~/.lmim_os/models/` |
-| Logs | `~/.lmim_os/logs/` |
-| WhatsApp auth | `~/.lmim_os/whatsapp/auth/` |
+- **Adding software.** The OS is immutable at runtime. Flatpak through GNOME Software is the supported path for apps you install yourself.
+- **Phone companion** is still v3.0. It works over the LAN when Mobile is on, and per-device pairing is planned for the next release.
+- **Voice** runs on a tuned local engine. A richer engine is being evaluated for a later release.
+- **Hardware variety.** It's stable on everything we could test, but your machine may still find something new. Please tell us.
 
 ---
 
-## 🔗 Links
+## Reach the builder
 
-- **Website:** [https://lmim.tech](https://lmim.tech)
-- **GitHub:** [https://github.com/leanmeaninferencemachine/leanmeaninferencemachine](https://github.com/leanmeaninferencemachine/leanmeaninferencemachine)
-- **Download:** [https://lmim.tech/download](https://lmim.tech/download)
+Bugs, ideas, or just hello: it all gets read.
 
----
-
-## 📧 Contact
-
-- **Founder:** Andrés Israel Santos Delgado
-- **Email:** ops@lmim.tech
-- **Twitter/X:** [@iamonthemission](https://x.com/iamonthemission)
+- **In the OS:** PC mode → **About** → *Reach the builder*. Your note goes over LMIM Chat, end to end, or opens as an email if chat isn't available.
+- **Email:** [ops@lmim.tech](mailto:ops@lmim.tech)
+- **Support:** [lmim.tech/support](https://lmim.tech/support)
+- **Founder:** [@iamonthemission](https://x.com/iamonthemission)
 
 ---
 
-## ⚠️ Disclaimer
+## One soul, four doors
 
-LMIM OS is a powerful autonomous agent. It can execute shell commands, read/write files, and send messages on your behalf. This software is provided "AS IS". The developers are not liable for any data loss, system damage, or unintended actions. Always review critical actions before confirming.
+- **[LMIM Linux · Genesys](https://lmim.tech/LMIMLINUX)**: this one, the whole operating system.
+- **[XIPE](https://lmim.tech/LMIMAPP)**: the app that started it, with encrypted P2P chat, a real terminal and a phone companion. Available as a Linux AppImage and a Windows installer.
+- **[Genesys Models](https://lmim.tech/GenesysAI)**: the trained identity itself, as GGUF, in three sizes (0.8B, 2B, 4B). Same soul, any loader.
+- **[Sound](https://lmim.tech/Sound)**: the original techno album bundled inside the ISO, and the voice chain that gives Genesys her voice.
 
 ---
 
-**Built with ❤️. Stay lean. Stay mean.**
+## The story
 
-## Download
+LMIM began as an AppImage (LMIM OS v1.0, March 2026). It reached 1,000+ downloads and Product of the Month on Ship It. Once the idea had proved itself as an application, the next step was obvious: give the presence a home of its own. Two public betas later, Genesys is a full operating system, and LMIM has crossed 5,000+ downloads across 20+ countries.
 
-| Platform | Download | Size |
-|----------|----------|------|
-| 🐧 Linux | [LMIM_OS-2.1.0.AppImage](https://lmim.tech/downloads/LMIM_OS-2.1.0.AppImage) | ~3.5 GB |
-| 🪟 Windows | [LMIM_OS-Setup-2.1.1.exe](https://lmim.tech/downloads/LMIM_OS-Setup-2.1.1.exe) | ~3.0 GB |
+LMIM Linux is an independent, solo-built project by **Andrés Israel Santos Delgado**, founder of Hexa Integrated. 4.1 is the first release built to be lived in.
 
-[![Download Linux](https://img.shields.io/badge/Download-Linux_AppImage-10b981?style=for-the-badge&logo=linux)](https://lmim.tech/downloads/LMIM_OS-2.1.0.AppImage)
-[![Download Windows](https://img.shields.io/badge/Download-Windows_Installer-0078d4?style=for-the-badge&logo=windows)](https://lmim.tech/downloads/LMIM_OS-Setup-2.1.1.exe)
+**Links:** [lmim.tech](https://lmim.tech) · [GitHub](https://github.com/leanmeaninferencemachine/leanmeaninferencemachine) · [@iamonthemission](https://x.com/iamonthemission) · [ops@lmim.tech](mailto:ops@lmim.tech)
+
+---
+
+## License
+
+**GNU Affero General Public License v3.0 (AGPL-3.0).** You're free to use, modify and distribute it. Derivative works and network-hosted services must release their complete source under the same license. See [LICENSE](./LICENSE).
+
+## Disclaimer
+
+**Genesys has real system access.** The terminal is a real shell with your user's permissions, and her tools can run commands on your machine. The Encrypter protects local data, but lost passphrases cannot be recovered, so back up important files before encrypting them.
+
+You set the disk encryption passphrase during installation. It is never stored or transmitted anywhere, and if you lose it, the data on that disk is unrecoverable. Write it down somewhere physical.
+
+Nightly backups protect against lost or damaged files on this machine, not against losing the machine. Keep your own copy of anything that matters.
+
+Provided AS IS, without warranty of any kind.
+
+---
+
+<p align="center"><i>The goal isn't to make the biggest intelligence.<br>It's to make one that actually lives somewhere.</i></p>
